@@ -1,0 +1,17 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Post Detail Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+{% load markdown_filter %}
+
+<article>
+  <h1>{{ post.title }}</h1>
+  <h4>By: {{ post.author.username }}</h4>
+  <h4>At: {{ post.created }}</h4>
+
+  {{ post.content|render_markdown|safe }}
+</article>
+{% endblock %}

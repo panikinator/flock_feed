@@ -1,0 +1,17 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Create New Post{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<h1>Create New Post</h1>
+<form  method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Post Details</legend>
+        {{ form.as_p  }}
+        <button type="submit">Post!</button>
+    </fieldset>
+</form>
+{% endblock %}

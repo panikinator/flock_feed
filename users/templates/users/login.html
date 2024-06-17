@@ -1,0 +1,17 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<h1>Existing User Login</h1>
+<form  method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Login</legend>
+        {{ form.as_p  }}
+        <button type="submit">Login</button>
+    </fieldset>
+</form>
+{% endblock %}

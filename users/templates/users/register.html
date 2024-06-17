@@ -1,0 +1,19 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Registration Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<h1>New User Registration</h1>
+<form  method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Join Us!</legend>
+        {{ form1.as_p  }}
+        {{ form2.as_p  }}
+
+        <button type="submit">Register</button>
+    </fieldset>
+</form>
+{% endblock %}

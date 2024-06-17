@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flock Feed App">
+    <meta name="keywords" content="Blog Social Django Web app">
+    {% load static %}
+<link rel="shortcut icon" href="{% static 'flock_feed/favicon.jpeg' %}" type="image/x-icon">
+<link rel="stylesheet" href="{% static 'flock_feed/simple.css' %}">
+<script src="{% static 'flock_feed/htmx.min.js' %}"></script>
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'flock_feed_home' %}" class="{% if request.resolver_match.url_name == 'flock_feed_home' %}current{% endif %}">Home🏠️</a></li>
+                <li><a href="{% url 'flock_feed_about' %}" class="{% if request.resolver_match.url_name == 'flock_feed_about' %}current{% endif %}">About</a></li>
+                <li><a href="{% url 'post_create' %}" class="{% if request.resolver_match.url_name == 'post_create' %}current{% endif %}">Create</a></li>
+                
+
+                {% if user.is_authenticated %}
+                <li>
+                    <form method="post" action="{% url 'user_logout' %}" id="logout_form">
+                        {% csrf_token %}
+                        <a href="#" onclick="document.getElementById('logout_form').submit();">Logout</a>
+                    </form>
+                </li>
+                <li><a href="{% url 'user_profile_self' %}" class="{% if request.resolver_match.url_name == 'user_profile_self' %}current{% endif %}">Profile</a></li>
+                {% else %}
+                <li><a href="{% url 'user_login' %}" class="{% if request.resolver_match.url_name == 'user_login' %}current{% endif %}">Login</a></li>
+                <li><a href="{% url 'user_registration' %}" class="{% if request.resolver_match.url_name == 'user_registration' %}current{% endif %}">Register</a></li>
+                {% endif %}
+                
+                
+            </ul>
+
+        </nav>
+        <h1>Flock Feed</h1>
+    </header>
+    {% if messages %}
+    {% for message in messages %}
+    <p class="notice">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% block body %} {% endblock %}
+    <footer>
+        This site was not made with love but django
+
+    </footer>
+</body>
+</html>

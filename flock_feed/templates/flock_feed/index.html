@@ -1,0 +1,25 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+{% load markdown_filter %}
+
+<h1>Recent Posts</h1>
+{% for post in posts %}
+<article>
+  <h3>By: {{ post.author.username }}</h3>
+  <h4>At: {{ post.created }}</h4>
+  <h4>Title: {{ post.title }}</h4>
+  <a href="{% url 'post_detail' post.id %}">Read Full here</a>
+  <hr>
+  <small>Tags: 
+  {% for tag in post.tags %}
+  {{ tag }} | 
+  {% endfor %}
+  </small>
+</article>
+{% endfor %}
+{% endblock %}

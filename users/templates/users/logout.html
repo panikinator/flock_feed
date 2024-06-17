@@ -1,0 +1,14 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}Logout Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<h1> User Logged out!</h1>
+<ul>
+    <li><a href="{% url 'user_login' %}">login again</a></li>
+    <li><a href="{% url 'user_registration' %}">create new account</a></li>
+
+</ul>
+{% endblock %}

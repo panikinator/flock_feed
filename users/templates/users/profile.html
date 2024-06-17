@@ -1,0 +1,14 @@
+{% extends "flock_feed/base.html" %}
+
+{% block title %}User Profile Page{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+<article>
+    <img src="{{ anyuser.userprofile.image.url }}" alt="user profile picture" width="150" height="150">
+    <h1>{{ anyuser.username }}'s profile</h1>
+    <h2>About:</h2>
+    <p>{{ anyuser.userprofile.about }}</p>
+</article>
+{% endblock %}
